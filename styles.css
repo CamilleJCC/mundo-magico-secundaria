@@ -116,16 +116,14 @@ p {
 }
 
 .magic-input {
-    width: 100%;
+    width: 90%;
     padding: 0.9375rem;
     border-radius: 13px;
     border: 2px solid var(--gradient-start);
     background: var(--background-color);
     margin-bottom: 7px;
     font-size: clamp(1rem, 2vw, 1.125rem);
-    height: 3.9375rem;
-    resize: none;
-    overflow: hidden;
+    resize: auto;
     line-height: 1.51;
 }
 
