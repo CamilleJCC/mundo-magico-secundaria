@@ -148,7 +148,7 @@ li {
 }
 
 .reveal-btn {
-    background: #c4e0ff;
+    background: #87bafa;
     border: none;
     padding: 0.6rem 1.3rem;
     border-radius: 1.5625rem;
@@ -193,19 +193,19 @@ background: #b5f0de;
 }
 
 .tooltip-text {
-    visibility: hidden;
+visibility: hidden;
     position: absolute;
     left: 100%;
     top: 50%;
     transform: translateY(-50%);
-    background: #c4e0ff;
-    padding: 12px 25px;
+    background: #87bafa;
     border-radius: 100px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: max-content;
     margin-left: 10px;
     z-index: 1000;
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-size: 1rem;
+    padding: 0.6rem 1.3rem;
 }
 
 .tooltip-container:hover .tooltip-text {
