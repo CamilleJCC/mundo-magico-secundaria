@@ -12,9 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
     const artwork = document.querySelector('.artwork');
     const revealBtn = document.querySelector('.reveal-btn');
-    const input = document.querySelector('.magic-input');
-    const artwork = document.getElementById('myimage');
-    const answersContainer = document.querySelector('.answers-container');
+    const inputs = document.querySelectorAll('.magic-input');
 
     function updateZoom(e) {
         const rect = artwork.getBoundingClientRect();
@@ -43,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     artwork.addEventListener('mouseleave', () => {
         magnifier.style.display = 'none';
     });
+});
+
 
     function createSparkles(element) {
         const rect = element.getBoundingClientRect();
