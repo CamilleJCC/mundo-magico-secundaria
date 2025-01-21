@@ -9,10 +9,16 @@ set(testRef, {
 });
 */
 document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
     const magnifier = document.querySelector('.magnifying-glass');
     const artwork = document.querySelector('.artwork');
     const revealBtn = document.querySelector('.reveal-btn');
     const inputs = document.querySelectorAll('.magic-input');
+    const bioBtn = document.getElementById('bioBtn');
+    const bioPopup = document.getElementById('bioPopup');
+    const transportPopup = document.getElementById('transportPopup');
+    const dreamPopup = document.getElementById('dreamPopup');
+    const closeButtons = document.querySelectorAll('.close-btn');
 
     function updateZoom(e) {
         const rect = artwork.getBoundingClientRect();
@@ -66,40 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         return colors[Math.floor(Math.random() * colors.length)];
     }
-    document.addEventListener('DOMContentLoaded', () => {
-    const bioBtn = document.getElementById('bioBtn');
-    const bioPopup = document.getElementById('bioPopup');
-    const transportPopup = document.getElementById('transportPopup');
-    const dreamPopup = document.getElementById('dreamPopup');
-    const closeButtons = document.querySelectorAll('.close-btn');
-    
-    // Biography popup
-    bioBtn.addEventListener('click', () => {
-        bioPopup.style.display = 'block';
-    });
-    
-    // Handle answer reveals
+
     function showAnswerPopup(answer, type) {
         const popup = type === 'transport' ? transportPopup : dreamPopup;
         popup.querySelector('.answer-text').textContent = answer;
         popup.style.display = 'block';
     }
-    
-    // Close button functionality
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            button.parentElement.style.display = 'none';
-        });
-    });
-    
-    // Close popup when clicking outside
-    window.addEventListener('click', (e) => {
-        if (e.target.classList.contains('popup')) {
-            e.target.style.display = 'none';
-        }
-    });
-    
-    // Modify your existing handleReveal function
+
     async function handleReveal() {
         inputs.forEach((input, index) => {
             if (input.value.trim()) {
@@ -108,49 +87,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
 
-
-    async function handleReveal() {
-        inputs.forEach(async (input) => {
-            if (input.value.trim()) {
-                try {
-                    console.log('Starting save process');
-                    const answersRef = ref(db, 'mundo-answers');
-                    console.log('Reference created');
-                    
-                    const newAnswerRef = push(answersRef);
-                    console.log('Push reference created');
-                    
-                    const dataToSave = {
-                        answer: input.value,
-                        timestamp: new Date().toISOString()
-                    };
-                    console.log('Data prepared:', dataToSave);
-                    
-                    await set(newAnswerRef, dataToSave);
-                    console.log('Data saved successfully');
-
-                    const newAnswer = document.createElement('div');
-                    newAnswer.className = 'revealed-answer reveal-animation';
-                    newAnswer.textContent = input.value;
-                    newAnswer.style.position = 'relative';
-                    newAnswer.style.background = getRandomColor();
-                    
-                    input.parentElement.appendChild(newAnswer);
-                    createSparkles(newAnswer);
-                    input.value = '';
-                } catch (error) {
-                    console.log('Detailed error:', error.message, error.code);
-                    throw error;
-                }
-            }
-        });
-    }
-
+    // Event Listeners
     artwork.addEventListener('mousemove', updateZoom);
     artwork.addEventListener('mouseleave', () => {
         magnifier.style.display = 'none';
+    });
+
+    bioBtn.addEventListener('click', () => {
+        bioPopup.style.display = 'block';
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.parentElement.style.display = 'none';
+        });
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('popup')) {
+            e.target.style.display = 'none';
+        }
     });
 
     revealBtn.addEventListener('click', handleReveal);
@@ -164,3 +121,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
