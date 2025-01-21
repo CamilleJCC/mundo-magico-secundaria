@@ -269,7 +269,7 @@ background: #b5f0de;
 
     .artwork-frame {
         margin: 0;
-        max-width: 80%;
+        max-width: 100%;
     }
 }
 
@@ -279,7 +279,7 @@ background: #b5f0de;
     }
     
     .artwork-frame {
-        max-width: 100%;
+        max-width: 90%%;
         margin-left: auto;
     }
 }
