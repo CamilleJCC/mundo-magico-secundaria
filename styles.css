@@ -94,12 +94,12 @@ p {
 
 li {
     text-align: left;
-    font-size: 16px; /* Base size */
+    font-size: 16px;
     line-height: 1.5;
     padding-bottom: 15px;
-    padding-right: min(20%, 6rem);
     color: var(--secondary-color);
     margin-left: 1.65rem;
+    width: 63%;
 }
 
 ::marker {
@@ -261,10 +261,11 @@ visibility: hidden;
     background: rgba(255, 255, 255, 0.95);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    max-width: 500px;
     display: none;
+    width: 67%;
+    height: 90%;
 }
 
 /* Biography popup button */
