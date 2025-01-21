@@ -1,4 +1,4 @@
-import { db } from './firebase-config.js';
+/*import { db } from './firebase-config.js';
 import { ref, set, push } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
 // Test connection outside DOMContentLoaded
@@ -7,7 +7,7 @@ set(testRef, {
     lastAccess: new Date().toISOString(),
     status: 'connected'
 });
-
+*/
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
     const artwork = document.querySelector('.artwork');
