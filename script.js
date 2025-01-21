@@ -10,28 +10,33 @@ set(testRef, {
 
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
-    const artwork = document.querySelector('.artwork'); // Change back to querySelector
+    const artwork = document.querySelector('.artwork');
     const revealBtn = document.querySelector('.reveal-btn');
     const input = document.querySelector('.magic-input');
     const answersContainer = document.querySelector('.answers-container');
 
     function updateZoom(e) {
-    const rect = artwork.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-        magnifier.style.display = 'block';
-        magnifier.style.left = `${x - magnifier.offsetWidth / 2}px`;
-        magnifier.style.top = `${y - magnifier.offsetHeight / 2}px`;
-        magnifier.style.backgroundImage = `url(${artwork.src})`;
-        magnifier.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
-        magnifier.style.backgroundSize = `${rect.width * 2}px`;
-    } else {
-        magnifier.style.display = 'none';
+        const rect = artwork.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const maxX = rect.width - magnifier.offsetWidth;
+        const maxY = rect.height - magnifier.offsetHeight;
+        
+        const boundedX = Math.max(0, Math.min(maxX, x - magnifier.offsetWidth / 2));
+        const boundedY = Math.max(0, Math.min(maxY, y - magnifier.offsetHeight / 2));
+        
+        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+            magnifier.style.display = 'block';
+            magnifier.style.left = `${boundedX}px`;
+            magnifier.style.top = `${boundedY}px`;
+            magnifier.style.backgroundImage = `url(${artwork.src})`;
+            magnifier.style.backgroundPosition = `${-x * 2 + magnifier.offsetWidth/2}px ${-y * 2 + magnifier.offsetHeight/2}px`;
+            magnifier.style.backgroundSize = `${artwork.width * 2}px`;
+        } else {
+            magnifier.style.display = 'none';
+        }
     }
-}
-
 
     artwork.addEventListener('mousemove', updateZoom);
     artwork.addEventListener('mouseleave', () => {
@@ -112,4 +117,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
