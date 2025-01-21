@@ -92,7 +92,7 @@ p {
 }
 
 li {
-        text-align: left;
+    text-align: left;
     font-size: clamp(1rem, 2vw, 1.125rem);
     padding-bottom: 15px;
     padding-right: min(20%, 6rem);
@@ -131,7 +131,7 @@ li {
 }
 
 .magic-input {
-    width: 90%;
+ width: 90%;
     padding: 0.9375rem;
     border-radius: 13px;
     border: 2px solid var(--gradient-start);
@@ -140,6 +140,8 @@ li {
     font-size: clamp(1rem, 2vw, 1.125rem);
     resize: auto;
     line-height: 1.51;
+    margin-top: 1rem;
+    margin-left: -26px;
 }
 
 .reveal-btn {
