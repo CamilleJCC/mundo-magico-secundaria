@@ -16,27 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const answersContainer = document.querySelector('.answers-container');
 
     function updateZoom(e) {
-        const rect = artwork.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+    const rect = artwork.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Calculate magnifier position
+    const magnifierSize = magnifier.offsetWidth;
+    const boundedX = Math.min(Math.max(0, x - magnifierSize/2), rect.width - magnifierSize);
+    const boundedY = Math.min(Math.max(0, y - magnifierSize/2), rect.height - magnifierSize);
+    
+    // Only show magnifier when mouse is over the image
+    if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+        magnifier.style.display = 'block';
+        magnifier.style.left = `${boundedX}px`;
+        magnifier.style.top = `${boundedY}px`;
         
-        const maxX = rect.width - magnifier.offsetWidth;
-        const maxY = rect.height - magnifier.offsetHeight;
+        // Calculate background position
+        const bgX = -x * 2 + magnifierSize/2;
+        const bgY = -y * 2 + magnifierSize/2;
         
-        const boundedX = Math.max(0, Math.min(maxX, x - magnifier.offsetWidth / 2));
-        const boundedY = Math.max(0, Math.min(maxY, y - magnifier.offsetHeight / 2));
-        
-        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-            magnifier.style.display = 'block';
-            magnifier.style.left = `${boundedX}px`;
-            magnifier.style.top = `${boundedY}px`;
-            magnifier.style.backgroundImage = `url(${artwork.src})`;
-            magnifier.style.backgroundPosition = `${-x * 2 + magnifier.offsetWidth/2}px ${-y * 2 + magnifier.offsetHeight/2}px`;
-            magnifier.style.backgroundSize = `${artwork.width * 2}px`;
-        } else {
-            magnifier.style.display = 'none';
-        }
+        magnifier.style.backgroundImage = `url(${artwork.src})`;
+        magnifier.style.backgroundPosition = `${bgX}px ${bgY}px`;
+        magnifier.style.backgroundSize = `${rect.width * 2}px ${rect.height * 2}px`;
+    } else {
+        magnifier.style.display = 'none';
     }
+}
+
 
     artwork.addEventListener('mousemove', updateZoom);
     artwork.addEventListener('mouseleave', () => {
