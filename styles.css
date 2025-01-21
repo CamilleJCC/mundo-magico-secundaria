@@ -101,7 +101,7 @@ li {
 }
 
 ::marker {
-  content: "Step " counter(list-item) ": ";
+  content: "0" counter(list-item) ": ";
 }
 
 .artwork {
