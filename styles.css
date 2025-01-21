@@ -136,8 +136,8 @@ li {
 }
 
 .magic-input {
- width: 100%;
-    padding: 0.9375rem;
+    width: 100%;
+    padding: 0.5rem;
     border-radius: 13px;
     border: 2px solid var(--gradient-start);
     background: var(--background-color);
@@ -147,7 +147,7 @@ li {
     line-height: 1.51;
     margin-top: 1rem;
     margin-left: -26px;
-    height: 4rem;
+    height: 3rem;
 }
 
 .reveal-btn {
