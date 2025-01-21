@@ -133,8 +133,8 @@ li {
 }
 
 .magic-input {
-    width: 100%;
-    padding: 0.5rem;
+   width: 100%;
+    padding: 0.62rem 1.4rem;
     border-radius: 13px;
     border: 2px solid var(--gradient-start);
     background: var(--background-color);
