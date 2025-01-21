@@ -70,34 +70,35 @@
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: clamp(3.75rem, 5.625rem, 90px); /* 90pt = ~120px */
+    line-height: clamp(3.92rem, 5.875rem, 94px);
     color: var(--primary-color);
     text-align: left;
-    line-height: 1.02;
     font-weight: normal;
     margin-bottom: clamp(1rem, 3vw, 1.25rem);
 }
 h2{
     padding-right: min(20%, 6rem);
-    font-size:1.3rem;
+    font-size: clamp(1.58rem, 2.375rem, 38px); /* 38pt = ~50.67px */
+    line-height: clamp(2rem, 3rem, 48px);
 }
 
 p {
     text-align: left;
-    font-size: 1rem;
     padding-bottom: 15px;
     padding-right: min(20%, 6rem);
     color: var(--secondary-color);
-    line-height: 1.3;
+    font-size: clamp(1.33rem, 2rem, 32px); /* 32pt = ~42.67px */
+    line-height: clamp(1.75rem, 2.625rem, 42px);
 }
 
 li {
     text-align: left;
-    font-size: 1rem;
+    font-size: clamp(1.33rem, 2rem, 32px); /* 32pt = ~42.67px */
+    line-height: clamp(1.75rem, 2.625rem, 42px);
     padding-bottom: 15px;
     padding-right: min(20%, 6rem);
     color: var(--secondary-color);
-    line-height: 1.3;
     margin-left: 1.65rem;
 }
 
