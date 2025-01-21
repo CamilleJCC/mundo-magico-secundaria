@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const artwork = document.querySelector('.artwork');
     const revealBtn = document.querySelector('.reveal-btn');
     const input = document.querySelector('.magic-input');
+    const artwork = document.getElementById('myimage');
     const answersContainer = document.querySelector('.answers-container');
 
     function updateZoom(e) {
