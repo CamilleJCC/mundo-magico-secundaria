@@ -95,7 +95,7 @@ li {
     text-align: left;
     font-size: clamp(1rem, 2vw, 1.125rem);
     padding-bottom: 15px;
-    padding-right: 12rem;
+    padding-right: 10vw;
     color: var(--secondary-color);
     line-height: 1.3;
     margin-left: 1.65rem;
@@ -132,7 +132,7 @@ li {
 }
 
 .magic-input {
- width: 90%;
+ width: 100%;
     padding: 0.9375rem;
     border-radius: 13px;
     border: 2px solid var(--gradient-start);
