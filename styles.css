@@ -36,6 +36,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'InterTight', system-ui, -apple-system, sans-serif;
+    font-weight:normal;
 }
 
 .investigation-container {
