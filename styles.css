@@ -66,6 +66,7 @@
     max-width: min(500px, 90vw);
     margin: 0 auto;
     position: relative;
+    cursor: none;
 }
 
 h1 {
@@ -125,6 +126,7 @@ li {
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
+
 
 .response-section {
     width: min(90%, 600px);
