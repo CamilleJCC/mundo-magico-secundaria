@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Mágico del Arte</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <div class="investigation-container">
+        <div class="left-col">
+            <h1>DESCUBRE <br>UN MUNDO MÁGICO</h1>
+          <h2> Sube a la nave mágica de la artista española <span class="semibold">Remedios Varo.</span> Agárrate fuerte y disfruta del viaje.</h2>
+      <br>  <p> ¿Cómo se mueve la nave mágica? ¿Cómo es el lugar por el que viaja? <br>
+¿A dónde irías tú con la nave? <br>
+¿Recuerdas tus sueños cuando te despiertas?
+</p>
+            
+            <div class="response-section">
+                <div class="answers-container">
+                    <!-- Multiple answers will appear here -->
+                </div>
+                <textarea class="magic-input" placeholder="¿Qué elementos surrealistas ves en esta obra?"></textarea>
+                <button class="reveal-btn">Revelar <img src="assets/flecha.svg" width="11px"></button>
+            </div>
+        </div>
+
+      <div class="artwork-frame">
+    <img src="assets/7.png" class="artwork" id="myimage" alt="Remedios Varo, Icono (Icon), 1945">
+    <div class="tooltip-container">
+        <img src="assets/Navegacion-07.svg" class="plus-icon" alt="Plus">
+        <p class="tooltip-text">Remedios Varo,<span class="italic"> Icono,</span> 1945</p>
+    </div>
+    <div class="magnifying-glass">
+        <!-- The magnifying glass effect will be handled by JavaScript -->
+    </div>
+</div>
+
+    </div>
+</body>
+</html>
