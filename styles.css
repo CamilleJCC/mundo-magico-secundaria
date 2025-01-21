@@ -71,7 +71,7 @@
 }
 
 h1 {
-    font-size: clamp(2rem, 5.4em, 4.1rem);
+    font-size: 4rem;
     color: var(--primary-color);
     text-align: left;
     line-height: 1.02;
@@ -80,11 +80,12 @@ h1 {
 }
 h2{
     padding-right: min(20%, 6rem);
+    font-size:1.3rem;
 }
 
 p {
     text-align: left;
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-size: 1rem;
     padding-bottom: 15px;
     padding-right: min(20%, 6rem);
     color: var(--secondary-color);
@@ -93,7 +94,7 @@ p {
 
 li {
     text-align: left;
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-size: 1rem;
     padding-bottom: 15px;
     padding-right: min(20%, 6rem);
     color: var(--secondary-color);
@@ -142,7 +143,7 @@ li {
     border: 2px solid var(--gradient-start);
     background: var(--background-color);
     margin-bottom: 7px;
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-size: 1rem;
     resize: auto;
     line-height: 1.51;
     margin-top: 1rem;
@@ -156,7 +157,7 @@ li {
     padding: 0.9375rem 1.875rem;
     border-radius: 1.5625rem;
     color: var(--secondary-color);
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-size: 1rem;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
