@@ -43,7 +43,6 @@
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
     background: var(--background-color);
     padding: clamp(1rem, 3vw, 2rem);
     color: var(--secondary-color);
@@ -63,7 +62,7 @@
 }
 
 .artwork-frame {
-    width: 100%;
+    width: 80%%;
     max-width: min(500px, 90vw);
     margin: 0 auto;
     position: relative;
@@ -258,7 +257,6 @@ background: #b5f0de;
         grid-template-columns: 1fr 1fr;
         padding: 0rem 1rem;
         align-items: center;
-        gap: 2rem;
     }
 
     .left-col {
@@ -269,13 +267,13 @@ background: #b5f0de;
 
     .artwork-frame {
         margin: 0;
-        max-width: 100%;
+        max-width: 80%;
     }
 }
 
 @media (min-width: 1200px) {
     .investigation-container {
-        gap: 2rem;
+        gap: 0rem;
     }
     
     .artwork-frame {
