@@ -66,6 +66,50 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         return colors[Math.floor(Math.random() * colors.length)];
     }
+    document.addEventListener('DOMContentLoaded', () => {
+    const bioBtn = document.getElementById('bioBtn');
+    const bioPopup = document.getElementById('bioPopup');
+    const transportPopup = document.getElementById('transportPopup');
+    const dreamPopup = document.getElementById('dreamPopup');
+    const closeButtons = document.querySelectorAll('.close-btn');
+    
+    // Biography popup
+    bioBtn.addEventListener('click', () => {
+        bioPopup.style.display = 'block';
+    });
+    
+    // Handle answer reveals
+    function showAnswerPopup(answer, type) {
+        const popup = type === 'transport' ? transportPopup : dreamPopup;
+        popup.querySelector('.answer-text').textContent = answer;
+        popup.style.display = 'block';
+    }
+    
+    // Close button functionality
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.parentElement.style.display = 'none';
+        });
+    });
+    
+    // Close popup when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('popup')) {
+            e.target.style.display = 'none';
+        }
+    });
+    
+    // Modify your existing handleReveal function
+    async function handleReveal() {
+        inputs.forEach((input, index) => {
+            if (input.value.trim()) {
+                const type = index === 0 ? 'transport' : 'dream';
+                showAnswerPopup(input.value, type);
+            }
+        });
+    }
+});
+
 
     async function handleReveal() {
         inputs.forEach(async (input) => {
