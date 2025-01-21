@@ -8,50 +8,37 @@ set(testRef, {
     status: 'connected'
 });
 
-import { db } from './firebase-config.js';
-import { ref, set, push } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
-
-// Test connection outside DOMContentLoaded
-const testRef = ref(db, 'connection-test');
-set(testRef, {
-    lastAccess: new Date().toISOString(),
-    status: 'connected'
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
-    const artwork = document.getElementById('myimage');
+    const artwork = document.querySelector('.artwork'); // Change back to querySelector
     const revealBtn = document.querySelector('.reveal-btn');
     const input = document.querySelector('.magic-input');
     const answersContainer = document.querySelector('.answers-container');
 
-    function updateMagnifier(e) {
-        const bounds = artwork.getBoundingClientRect();
-        const x = e.clientX - bounds.left;
-        const y = e.clientY - bounds.top;
+    function updateZoom(e) {
+        const rect = artwork.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
         
-        magnifier.style.backgroundImage = `url(${artwork.src})`;
-        magnifier.style.backgroundSize = `${artwork.width * 2}px`;
+        const maxX = rect.width - magnifier.offsetWidth;
+        const maxY = rect.height - magnifier.offsetHeight;
         
-        const magnifierSize = magnifier.offsetWidth;
-        const xPos = Math.min(Math.max(0, x - magnifierSize/2), bounds.width - magnifierSize);
-        const yPos = Math.min(Math.max(0, y - magnifierSize/2), bounds.height - magnifierSize);
+        const boundedX = Math.max(0, Math.min(maxX, x - magnifier.offsetWidth / 2));
+        const boundedY = Math.max(0, Math.min(maxY, y - magnifier.offsetHeight / 2));
         
-        magnifier.style.left = xPos + 'px';
-        magnifier.style.top = yPos + 'px';
-        
-        const bgX = -x * 2 + magnifierSize;
-        const bgY = -y * 2 + magnifierSize;
-        magnifier.style.backgroundPosition = `${bgX}px ${bgY}px`;
-        
-        if (x >= 0 && x <= bounds.width && y >= 0 && y <= bounds.height) {
+        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
             magnifier.style.display = 'block';
+            magnifier.style.left = `${boundedX}px`;
+            magnifier.style.top = `${boundedY}px`;
+            magnifier.style.backgroundImage = `url(${artwork.src})`;
+            magnifier.style.backgroundPosition = `${-x * 2 + magnifier.offsetWidth/2}px ${-y * 2 + magnifier.offsetHeight/2}px`;
+            magnifier.style.backgroundSize = `${artwork.width * 2}px`;
         } else {
             magnifier.style.display = 'none';
         }
     }
 
-    artwork.addEventListener('mousemove', updateMagnifier);
+    artwork.addEventListener('mousemove', updateZoom);
     artwork.addEventListener('mouseleave', () => {
         magnifier.style.display = 'none';
     });
