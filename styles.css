@@ -79,8 +79,8 @@ h1 {
 }
 h2{
     padding-right: min(20%, 6rem);
-    font-size: clamp(1.25rem, 1.5rem, 24px); /* 24px */
-    line-height: clamp(1.5rem, 1.875rem, 30px);
+    font-size: clamp(1.25rem, 1.5rem, 20px);
+    line-height: clamp(1.5rem, 1.875rem, 24px);
 }
 
 p {
