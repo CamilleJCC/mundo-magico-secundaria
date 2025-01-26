@@ -183,7 +183,9 @@ background: #b5f0de;
 }
 .tooltip-container {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-top: 1.5rem;
 }
 
@@ -270,11 +272,9 @@ visibility: hidden;
 
 /* Biography popup button */
 .bio-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 30px;
-    height: 30px;
+ position: static; /* Remove absolute positioning */
+    width: 38px; /* Match plus icon size */
+    height: 38px; /* Match plus icon size */
     border-radius: 50%;
     background: var(--primary-color);
     border: none;
@@ -284,6 +284,7 @@ visibility: hidden;
     justify-content: center;
     color: white;
     font-family: 'InterTight-SemiBold';
+    font-size: 16px;
 }
 
 /* Answer popup animations */
