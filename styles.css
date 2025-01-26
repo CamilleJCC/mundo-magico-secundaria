@@ -289,7 +289,19 @@ visibility: hidden;
     transform: rotate(90deg);
 }
 
-
+ul {
+  margin: 0;
+}
+ul.dashed {
+  list-style-type: none;
+}
+ul.dashed > li {
+  text-indent: -5px;
+}
+ul.dashed > li:before {
+  content: "-";
+  text-indent: -5px;
+}
 @keyframes sparkleOut {
     0% { transform: scale(0); opacity: 1; }
     100% { transform: scale(1.5); opacity: 0; }
