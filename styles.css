@@ -342,7 +342,7 @@ visibility: hidden;
     z-index: 1000;
     display: none;
     width: 44%;
-    height: 31%;
+    height: fit-content;
 }
 
 /* Biography popup button */
