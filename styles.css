@@ -305,6 +305,7 @@ ul {
 }
 ul.dashed {
   list-style-type: none;
+  margin-left: 4px;
 }
 ul.dashed > li {
   text-indent: -5px;
