@@ -376,11 +376,13 @@ visibility: hidden;
 /* Answer popup animations */
 .transport-popup {
     animation: slideIn 0.5s ease-out;
+    position:relative;
 }
 
 .dream-popup {
     animation: fadeIn 0.8s ease-out;
     background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+    position:relative;
 }
 
 @keyframes slideIn {
