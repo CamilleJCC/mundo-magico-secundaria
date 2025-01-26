@@ -365,17 +365,6 @@ ul.dashed > li:before {
     display: block;
     animation: revealNote 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.popups-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 1000;
-    width:100%;
-}
 
 /* Base popup styles */
 .popup {
@@ -410,6 +399,18 @@ ul.dashed > li:before {
     font-size: 16px;
 }
 
+.popups-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1000;
+    width:100%;
+}
+
 /* Answer popup animations */
 .transport-popup {
     animation: slideIn 0.5s ease-out;
@@ -417,11 +418,6 @@ ul.dashed > li:before {
     background:#40c5ae;
 }
 
-.dream-popup {
-    animation: fadeIn 0.8s ease-out;
-    background: #40c5ae;
-    position:relative;
-}
 
 @keyframes slideIn {
     from {
