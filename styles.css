@@ -343,11 +343,11 @@ visibility: hidden;
 
 /* Base popup styles */
 .popup {
-       position: fixed;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #87bafa;
+    background: #40c5ae;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -378,11 +378,12 @@ visibility: hidden;
 .transport-popup {
     animation: slideIn 0.5s ease-out;
     position:relative;
+    background:#40c5ae;
 }
 
 .dream-popup {
     animation: fadeIn 0.8s ease-out;
-    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+    background: #40c5ae;
     position:relative;
 }
 
