@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputs = document.querySelectorAll('.magic-input');
     const plusIcon = document.querySelector('.plus-icon');
     const overlay = document.getElementById('overlay');
-    const popups = document.querySelectorAll('.popup');
-    const closeButtons = document.querySelectorAll('.close-btn');
+    const bioPopup = document.getElementById('bioPopup');
     const transportPopup = document.getElementById('transportPopup');
     const dreamPopup = document.getElementById('dreamPopup');
+    const closeButtons = document.querySelectorAll('.close-btn');
 
     function updateZoom(e) {
         const rect = artwork.getBoundingClientRect();
@@ -42,6 +42,36 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             magnifier.style.display = 'none';
         }
+    }
+
+    function createSparkles(element) {
+        const rect = element.getBoundingClientRect();
+        
+        for (let i = 0; i < 30; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            
+            const x = Math.random() * rect.width;
+            const y = Math.random() * rect.height;
+            
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.backgroundColor = `hsl(${Math.random() * 360}, 50%, 50%)`;
+            
+            element.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 1500);
+        }
+    }
+
+    function getRandomColor() {
+        const colors = [
+            '#b5f0de',
+            '#fab8a1',
+            '#faf7ba',
+            '#c2b2ff'
+        ];
+        return colors[Math.floor(Math.random() * colors.length)];
     }
 
     function showAnswerPopup(answer, type) {
@@ -68,9 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     plusIcon.addEventListener('click', () => {
         overlay.style.display = 'block';
-        popups.forEach(popup => {
-            popup.style.display = 'block';
-        });
+        bioPopup.style.display = 'block';
     });
 
     closeButtons.forEach(button => {
@@ -82,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     overlay.addEventListener('click', () => {
         overlay.style.display = 'none';
-        popups.forEach(popup => {
-            popup.style.display = 'none';
-        });
+        bioPopup.style.display = 'none';
+        transportPopup.style.display = 'none';
+        dreamPopup.style.display = 'none';
     });
 
     revealBtn.addEventListener('click', handleReveal);
@@ -98,5 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
 
 
