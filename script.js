@@ -88,6 +88,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Show overlay
+function showPopup() {
+    document.getElementById('overlay').style.display = 'block';
+    // Your existing popup show code
+}
+
+// Hide overlay
+function hidePopup() {
+    document.getElementById('overlay').style.display = 'none';
+    // Your existing popup hide code
+}
+
+
     // Event Listeners
     artwork.addEventListener('mousemove', updateZoom);
     artwork.addEventListener('mouseleave', () => {
