@@ -372,7 +372,7 @@ ul.dashed > li:before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #40c5ae;
+    background:#b5f0de;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -388,7 +388,7 @@ ul.dashed > li:before {
     width: 38px; /* Match plus icon size */
     height: 38px; /* Match plus icon size */
     border-radius: 50%;
-    background: var(--primary-color);
+    background: #b5f0de;
     border: none;
     cursor: pointer;
     display: flex;
@@ -415,7 +415,7 @@ ul.dashed > li:before {
 .transport-popup {
     animation: slideIn 0.5s ease-out;
     position:relative;
-    background:#40c5ae;
+    background:#b5f0de;
 }
 
 
