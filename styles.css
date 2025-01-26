@@ -473,7 +473,7 @@ ul.dashed > li:before {
     }
 }
 
-@media and (max-width:1000px){
+@media (max-width:1000px){
     h2 {
         width:100%;
     }
