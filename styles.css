@@ -338,6 +338,7 @@ visibility: hidden;
     flex-direction: column;
     gap: 20px;
     z-index: 1000;
+    width:100%;
 }
 
 /* Base popup styles */
