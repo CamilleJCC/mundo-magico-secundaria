@@ -14,11 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const artwork = document.querySelector('.artwork');
     const revealBtn = document.querySelector('.reveal-btn');
     const inputs = document.querySelectorAll('.magic-input');
-    const bioBtn = document.getElementById('plusBtn');
-    const bioPopup = document.getElementById('bioPopup');
+    const plusIcon = document.querySelector('.plus-icon');
+    const overlay = document.getElementById('overlay');
+    const popups = document.querySelectorAll('.popup');
+    const closeButtons = document.querySelectorAll('.close-btn');
     const transportPopup = document.getElementById('transportPopup');
     const dreamPopup = document.getElementById('dreamPopup');
-    const closeButtons = document.querySelectorAll('.close-btn');
 
     function updateZoom(e) {
         const rect = artwork.getBoundingClientRect();
@@ -43,43 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function createSparkles(element) {
-        const rect = element.getBoundingClientRect();
-        
-        for (let i = 0; i < 30; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            
-            const x = Math.random() * rect.width;
-            const y = Math.random() * rect.height;
-            
-            sparkle.style.left = x + 'px';
-            sparkle.style.top = y + 'px';
-            sparkle.style.backgroundColor = `hsl(${Math.random() * 360}, 50%, 50%)`;
-            
-            element.appendChild(sparkle);
-            
-            setTimeout(() => sparkle.remove(), 1500);
-        }
-    }
-
-    function getRandomColor() {
-        const colors = [
-            '#b5f0de',
-            '#fab8a1',
-            '#faf7ba',
-            '#c2b2ff'
-        ];
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-
     function showAnswerPopup(answer, type) {
+        overlay.style.display = 'block';
         const popup = type === 'transport' ? transportPopup : dreamPopup;
         popup.querySelector('.answer-text').textContent = answer;
         popup.style.display = 'block';
     }
 
-    async function handleReveal() {
+    function handleReveal() {
         inputs.forEach((input, index) => {
             if (input.value.trim()) {
                 const type = index === 0 ? 'transport' : 'dream';
@@ -88,39 +60,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Show overlay
-function showPopup() {
-    document.getElementById('overlay').style.display = 'block';
-    // Your existing popup show code
-}
-
-// Hide overlay
-function hidePopup() {
-    document.getElementById('overlay').style.display = 'none';
-    // Your existing popup hide code
-}
-
-
     // Event Listeners
     artwork.addEventListener('mousemove', updateZoom);
     artwork.addEventListener('mouseleave', () => {
         magnifier.style.display = 'none';
     });
 
-    bioBtn.addEventListener('click', () => {
-        bioPopup.style.display = 'block';
+    plusIcon.addEventListener('click', () => {
+        overlay.style.display = 'block';
+        popups.forEach(popup => {
+            popup.style.display = 'block';
+        });
     });
 
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
+            overlay.style.display = 'none';
             button.parentElement.style.display = 'none';
         });
     });
 
-    window.addEventListener('click', (e) => {
-        if (e.target.classList.contains('popup')) {
-            e.target.style.display = 'none';
-        }
+    overlay.addEventListener('click', () => {
+        overlay.style.display = 'none';
+        popups.forEach(popup => {
+            popup.style.display = 'none';
+        });
     });
 
     revealBtn.addEventListener('click', handleReveal);
@@ -134,4 +98,5 @@ function hidePopup() {
         });
     });
 });
+
 
