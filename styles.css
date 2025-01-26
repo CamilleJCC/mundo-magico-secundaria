@@ -342,10 +342,10 @@ visibility: hidden;
 
 /* Base popup styles */
 .popup {
-    position: relative; /* Change from fixed to relative */
-    transform: none; /* Remove transform since parent handles positioning */
-    top: auto;
-    left: auto;
+       position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #87bafa;
     padding: 20px;
     border-radius: 15px;
