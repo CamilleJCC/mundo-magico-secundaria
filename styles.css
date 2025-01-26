@@ -102,12 +102,14 @@ li {
     width: 63%;
 }
 
+/* Remove marker for dashed list items */
+.dashed li::marker {
+    content: none;
+}
+
+/* Adjust the margin since we removed the marker */
 .dashed li {
- text-align: left;
-    font-size: 16px;
-    line-height: 1.5;
-    padding-bottom: 15px;
-    color: var(--secondary-color);
+    margin-left: 0;
 }
 
 ::marker {
