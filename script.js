@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const artwork = document.querySelector('.artwork');
     const revealBtn = document.querySelector('.reveal-btn');
     const inputs = document.querySelectorAll('.magic-input');
-    const plusIcon = document.querySelector('.plus-icon');
-    const overlay = document.getElementById('overlay');
+    const plusBtn = document.getElementById('plusBtn');
+    const questionBtn = document.getElementById('questionBtn');
     const bioPopup = document.getElementById('bioPopup');
-    const transportPopup = document.getElementById('transportPopup');
-    const dreamPopup = document.getElementById('dreamPopup');
+    const questionPopup = document.getElementById('questionPopup');
+    const overlay = document.getElementById('overlay');
     const closeButtons = document.querySelectorAll('.close-btn');
 
     function updateZoom(e) {
@@ -46,20 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createSparkles(element) {
         const rect = element.getBoundingClientRect();
-        
         for (let i = 0; i < 30; i++) {
             const sparkle = document.createElement('div');
             sparkle.className = 'sparkle';
-            
             const x = Math.random() * rect.width;
             const y = Math.random() * rect.height;
-            
             sparkle.style.left = x + 'px';
             sparkle.style.top = y + 'px';
             sparkle.style.backgroundColor = `hsl(${Math.random() * 360}, 50%, 50%)`;
-            
             element.appendChild(sparkle);
-            
             setTimeout(() => sparkle.remove(), 1500);
         }
     }
@@ -74,18 +69,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return colors[Math.floor(Math.random() * colors.length)];
     }
 
-    function showAnswerPopup(answer, type) {
+    function showAnswerPopup(answer, index) {
         overlay.style.display = 'block';
-        const popup = type === 'transport' ? transportPopup : dreamPopup;
+        const popup = document.getElementById(`answer${index + 1}Popup`);
         popup.querySelector('.answer-text').textContent = answer;
         popup.style.display = 'block';
+        setTimeout(() => {
+            popup.classList.add('show');
+        }, 10);
     }
 
     function handleReveal() {
         inputs.forEach((input, index) => {
             if (input.value.trim()) {
-                const type = index === 0 ? 'transport' : 'dream';
-                showAnswerPopup(input.value, type);
+                showAnswerPopup(input.value, index);
             }
         });
     }
@@ -96,23 +93,42 @@ document.addEventListener('DOMContentLoaded', () => {
         magnifier.style.display = 'none';
     });
 
-    plusIcon.addEventListener('click', () => {
+    // Plus icon opens bio
+    plusBtn.addEventListener('click', () => {
         overlay.style.display = 'block';
         bioPopup.style.display = 'block';
     });
 
+    // Question mark opens sabias que
+    questionBtn.addEventListener('click', () => {
+        overlay.style.display = 'block';
+        questionPopup.style.display = 'block';
+    });
+
+    // Close functionality
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
-            overlay.style.display = 'none';
-            button.parentElement.style.display = 'none';
+            const popup = button.closest('.popup');
+            if (popup.classList.contains('transport-popup')) {
+                popup.classList.remove('show');
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                    overlay.style.display = 'none';
+                }, 500);
+            } else {
+                overlay.style.display = 'none';
+                popup.style.display = 'none';
+            }
         });
     });
 
+    // Close on overlay click
     overlay.addEventListener('click', () => {
+        const visiblePopups = document.querySelectorAll('.popup[style*="display: block"]');
+        visiblePopups.forEach(popup => {
+            popup.style.display = 'none';
+        });
         overlay.style.display = 'none';
-        bioPopup.style.display = 'none';
-        transportPopup.style.display = 'none';
-        dreamPopup.style.display = 'none';
     });
 
     revealBtn.addEventListener('click', handleReveal);
