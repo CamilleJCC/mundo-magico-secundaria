@@ -78,7 +78,7 @@ h1 {
     margin-bottom: clamp(1rem, 3vw, 1.25rem);
 }
 h2{
-    padding-right: min(20%, 6rem);
+    width:65%;
     font-size: clamp(1.25rem, 1.5rem, 20px);
     line-height: clamp(1.5rem, 1.875rem, 24px);
 }
@@ -139,9 +139,46 @@ li {
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
+.tooltip-text.question{
+    width: 26em;
+    border-radius: 30px;
+    margin-top: 20px;
+    background: #faf7ba;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+}
+/* Question Icon Styles */
+.question-icon {
+width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #faf7ba;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    color: #87bafa;
+    font-family: 'InterTight';
+    font-size: 32px;
+    margin-top: -1.3rem !important;
+}
+
+.question-icon:hover {
+    background: var(--gradient-end);
+}
 
 .response-section {
     width: min(90%, 600px);
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .magic-input {
@@ -365,6 +402,25 @@ ul.dashed > li:before {
     display: block;
     animation: revealNote 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.popups-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1000;
+    width:100%;
+}
+
+/* Answer popup animations */
+.transport-popup {
+    animation: slideIn 0.5s ease-out;
+    position:relative!important;
+    background:#b5f0de;
+}
+
 
 /* Base popup styles */
 .popup {
@@ -372,7 +428,7 @@ ul.dashed > li:before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background:#b5f0de;
+    background: #b5f0de;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -380,6 +436,13 @@ ul.dashed > li:before {
     display: none;
     width: 44%;
     height: fit-content;
+}
+.popup p {
+padding:20px;
+}
+#questionPopup {
+    background:#faf7ba;
+    width:35%;
 }
 
 /* Biography popup button */
@@ -399,24 +462,6 @@ ul.dashed > li:before {
     font-size: 16px;
 }
 
-.popups-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 1000;
-    width:100%;
-}
-
-/* Answer popup animations */
-.transport-popup {
-    animation: slideIn 0.5s ease-out;
-    position:relative;
-    background:#b5f0de;
-}
 
 
 @keyframes slideIn {
@@ -448,6 +493,7 @@ ul.dashed > li:before {
         grid-template-columns: 1fr 1fr;
         padding: 0rem 1rem;
         align-items: center;
+        gap: 4rem;
     }
 
     .left-col {
@@ -472,7 +518,6 @@ ul.dashed > li:before {
         margin-left: auto;
     }
 }
-
 @media (max-width:1000px){
     h2 {
         width:100%;
