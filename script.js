@@ -72,15 +72,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return colors[Math.floor(Math.random() * colors.length)];
     }
 
-    function showAnswerPopup(answer, index) {
-        overlay.style.display = 'block';
-        const popup = document.getElementById(`answer${index + 1}Popup`);
+   function showAnswerPopup(answer, index) {
+    overlay.style.display = 'block';
+    const popup = document.getElementById(`answer${index + 1}Popup`);
+    if (popup) {
         popup.querySelector('.answer-text').textContent = answer;
         popup.style.display = 'block';
-        setTimeout(() => {
-            popup.classList.add('show');
-        }, 10);
+        popup.classList.add('show');
     }
+}
 
     function handleReveal() {
         inputs.forEach((input, index) => {
