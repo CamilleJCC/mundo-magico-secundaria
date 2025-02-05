@@ -567,10 +567,14 @@ font-size: 1.3rem;
     li {
         width:86%;
     }
-    .popup {
+      .popup {
      width: 92%;
-    padding: 30px 22px;
+    padding: 52px 22px;
     }
+     #questionPopup {
+    background: var(--background-color);
+    width: 90%;
+}
     .investigation-container{
         width: 100vw;
         padding-bottom: 132px;
